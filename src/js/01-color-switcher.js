@@ -8,7 +8,7 @@ console.log(refs.btnStop);
 
 refs.btnStart.addEventListener('click', startChangeColor);
 refs.btnStop.addEventListener('click', stopChangeColor);
-
+let timerId = null;
 function startChangeColor() {
     timerId = setInterval(() => {
         refs.bodyEl.style.backgroundColor = getRandomHexColor();

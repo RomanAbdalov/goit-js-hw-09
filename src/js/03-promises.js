@@ -21,12 +21,23 @@ const promise = new Promise((resolve, reject) => {
 return promise;
 };
 
+
+
 refs.button.addEventListener('click', event => {
   event.preventDefault();
 
   const firstDelay = Number(refs.delay.value);
   const delayStep = Number(refs.step.value);
-
+  const amount = Number(refs.amount.value);
+  
+  if(firstDelay < 0 || delayStep < 0 || amount <= 0) {
+    Notiflix.Notify.warning('Pleas fill in all the fealds');
+    showNotification();
+    return;
+   
+  };
+ 
+ 
   for (let i = 0; i < refs.amount.value; i++) {
     createPromise(1 + i, firstDelay + i * delayStep)
     .then(({position, delay}) => {
